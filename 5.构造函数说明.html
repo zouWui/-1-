@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--
+			面向对象讲的就是类的概念；面向对象用构造函数实现
+			1.在构造函数中new Fn() 执行，如果Fn不需要传值，后面的小括号可以省略；
+			
+			2.this的问题，在类中出现的this.xxx = xxx中的this就是当前类的实例，而某一个属性值（方法），方法中的this
+			     需要看方法执行的时候，前面是否有“.",才知道this是谁；
+			     
+			3.构造函数也有普通函数的一面，当函数执行的时候，var 变量, 只是当前函数的私有变量而已，他和我们实例没有关系，
+			     只有this.xxx=xxx是给实例增加私有的属性和方法，才和我们的实例有关系；
+			     
+			     
+			4.在构造函数中，默认给返回一个对象， 如果咱们手动写return，return后面如果是基本数据类型，返回的仍然是实例；
+			return后面如果是对象;那么返回的是这个对象；会把实例覆盖
+			      
+			      
+			5.检测某个实例是否属于某个类 instanceof，它是布尔值，如果是，返回的是true,否则的话返回的是false;
+				
+			
+			      
+			6.in 用来检测某个属性是否是这个对象的属性(不管是公有还是私有都能检测出来)。返回是布尔
+			    hasOwnProperty:用来检测某个属性是否是这个对象的私有属性，这个方法只能检测私有的； 返回是布尔
+		-->
+	</body>
+</html>
+<script>
+	function Fn(){
+		var num = 200;
+		this.x = 100;  // 构造函数中  this.属性 ；这个this就是实例 
+		this.getX = function(){
+			console.log(this); // res    函数执行，看函数前面有没有“.”有点就是点前面的调用者
+			console.log(this.x);// res.x    100
+		}
+		//return {uname:'lily',age:16}	
+	}
+	var res = new Fn;
+	//res.getX()
+	//var fn = res.getX;
+	//fn();// window   window.x  一个对象上没有x这个属性;得到的结果是undefined
+	
+	//console.log(res.num);//undefined
+	console.log(res)
+	
+	
+</script>
